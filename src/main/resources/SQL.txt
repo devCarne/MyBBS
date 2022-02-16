@@ -1,0 +1,29 @@
+CREATE TABLE mybbs_tbl(
+    num NUMBER,
+    title varchar2(100),
+    writer varchar2(100),
+    content varchar2(100),
+    regdate DATE,
+    replycnt NUMBER
+);
+
+CREATE SEQUENCE mybbs_tbl_seq;
+
+CREATE TABLE reply_tbl(
+    num number,
+    bbs_num number,
+    comments varchar2(100),
+    writer varchar2(100)
+);
+
+CREATE TABLE mybbs_user_tbl(
+    id VARCHAR2(100),
+    pw VARCHAR2(100),
+    name VARCHAR2(100)
+);
+
+BEGIN
+    FOR I IN 1..50 LOOP
+        INSERT INTO MYBBS_TBL VALUES (MYBBS_TBL_SEQ.nextval, 'DUMMY TITLE', 'DUMMY USER', 'DUMMY', SYSDATE, 0);
+        end loop;
+end;

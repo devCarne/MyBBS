@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybbs.dao.MyBbsDAO">
+
+    <select id="getList" resultType="com.example.mybbs.dto.MyBbsDTO">
+        SELECT * FROM MYBBS_TBL ORDER BY NUM DESC
+    </select>
+
+    <select id="searchTitle" resultType="com.example.mybbs.dto.MyBbsDTO">
+        SELECT * FROM MYBBS_TBL WHERE TITLE = #{param1} ORDER BY NUM DESC
+    </select>
+
+    <select id="searchWriter" resultType="com.example.mybbs.dto.MyBbsDTO">
+        SELECT * FROM MYBBS_TBL WHERE WRITER = #{param1} ORDER BY NUM DESC
+    </select>
+
+    <insert id="write">
+        INSERT INTO MYBBS_TBL VALUES (MYBBS_TBL_SEQ.nextval, #{title}, #{writer}, #{content}, #{regDate}, #{replyCnt})
+    </insert>
+
+    <select id="read" resultType="com.example.mybbs.dto.MyBbsDTO">
+        SELECT * FROM MYBBS_TBL WHERE NUM = #{param1}
+    </select>
+
+    <update id="update">
+        UPDATE MYBBS_TBL SET TITLE = #{param2}, CONTENT = #{param3} WHERE NUM = #{param1}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM MYBBS_TBL WHERE NUM = #{param1}
+    </delete>
+
+    <update id="addReply">
+        UPDATE MYBBS_TBL SET REPLYCNT = #{param2} WHERE NUM = #{param1}
+    </update>
+</mapper>

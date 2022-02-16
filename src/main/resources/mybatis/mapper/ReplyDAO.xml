@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybbs.dao.ReplyDAO">
+    <insert id="reply">
+        INSERT INTO REPLY_TBL VALUES (#{num}, #{bbs_num}, #{comments}, #{writer})
+    </insert>
+
+    <select id="getReply" resultType="com.example.mybbs.dto.ReplyDTO">
+        SELECT * FROM REPLY_TBL WHERE BBS_NUM = #{param1}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM REPLY_TBL WHERE BBS_NUM = #{param1}
+    </delete>
+</mapper>
